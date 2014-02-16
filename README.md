@@ -7,20 +7,6 @@ This library provides a no-bloat solution (I'm looking at you, Guava), comprisin
 
 You may ask why not just implement those checks with regular, plain old `if` statements? You can, but it's more parsimonious and readable to have methods that clearly say what's going on, and standardization of implementation and the exceptions and error messages when validation fails are also useful, especially when working with other developers.
 
-Getting started
----------------
-
-This library is in Maven Central and can be used with the following dependency:
-
-```xml
-<dependency>
-  <groupId>com.toddfast.preconditions</groupId>
-  <artifactId>preconditions</artifactId>
-  <version>1.0</version>
-</dependency>
-```
-Or, you can [download the artifacts directly](http://search.maven.org/#search%7Cga%7C1%7Ccom.toddfast.preconditions).
-
 Example
 -------
 
@@ -76,3 +62,17 @@ public Number valueGreaterThanOrEqual(Number argument, Number value, String para
 public Number valueLessThan(Number argument, Number value, String parameterName)
 public Number valueLessThanOrEqual(Number argument, Number value, String parameterName)
 ```
+
+Getting started
+---------------
+
+This library is in Maven Central and can be used with the following dependency:
+
+```xml
+<dependency>
+  <groupId>com.toddfast.preconditions</groupId>
+  <artifactId>preconditions</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+Or, you can [download the artifacts directly](http://search.maven.org/#search%7Cga%7C1%7Ccom.toddfast.preconditions).
