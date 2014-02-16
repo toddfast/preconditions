@@ -1,11 +1,11 @@
 Java Preconditions
 ==================
 
-A simple but complete set of precondition checks for Java. Most commonly used at the beginning of methods, preconditions are used to ensure that values are what you expect before you continue.
+A simple but complete set of precondition checks for Java. Most commonly used at the beginning of methods, preconditions ensure that values are what you expect before you continue.
 
 This library provides a no-bloat solution (I'm looking at you, Guava), comprising a single class with a robust set of static methods to check common preconditions. It has **no dependencies** other than Java 1.6+.
 
-You may ask why not just implement those checks the regular, old Java way. You can, but it's more parsimonious and readable to have methods that clearly say what's going on, and standardization of implementation and the exceptions and error messages when validation fails are also useful, especially when working with other developers.
+You may ask why not just implement those checks with regular, plain old `if` statements? You can, but it's more parsimonious and readable to have methods that clearly say what's going on, and standardization of implementation and the exceptions and error messages when validation fails are also useful, especially when working with other developers.
 
 Getting started
 ---------------
