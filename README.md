@@ -19,6 +19,7 @@ This library is in Maven Central and can be used with the following dependency:
   <version>1.0</version>
 </dependency>
 ```
+Or, you can [download the artifacts directly](http://search.maven.org/#search%7Cga%7C1%7Ccom.toddfast.preconditions).
 
 Example
 -------
