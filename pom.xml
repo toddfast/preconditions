@@ -7,8 +7,8 @@
 		<version>7</version>
 	</parent>
 
-    <groupId>com.toddfast.util.preconditions</groupId>
-    <artifactId>toddfast-preconditions</artifactId>
+    <groupId>com.toddfast.preconditions</groupId>
+    <artifactId>preconditions</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
