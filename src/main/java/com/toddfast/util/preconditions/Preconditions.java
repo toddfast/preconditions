@@ -3,7 +3,9 @@ package com.toddfast.util.preconditions;
 import java.util.Collection;
 
 /**
- * A complete collection of precondition checks
+ * A complete collection of precondition checks. Note, this class takes the
+ * perspective that standardized error messages are more useful and usable
+ * that custom error messages.
  * 
  * @author Todd Fast
  */
@@ -17,7 +19,6 @@ public class Preconditions {
 		super();
 	}
 
-
 	/**
 	 * Check that the value is not null
 	 *
@@ -25,7 +26,6 @@ public class Preconditions {
 	public static boolean isNotNull(Object value) {
 		return value!=null;
 	}
-
 
 	/**
 	 * Check if a string is non-null and non-empty
@@ -35,9 +35,8 @@ public class Preconditions {
 		return value!=null && !value.trim().isEmpty();
 	}
 
-
 	/**
-	 *
+	 * Throws <code>IllegalArgumentException</code> if the argument is null
 	 *
 	 */
 	public static <T> T argumentNotNull(T argument,
@@ -51,9 +50,9 @@ public class Preconditions {
 		return argument;
 	}
 
-
 	/**
-	 *
+	 * Converts a non-null <code>argument</code> to a string and ensures that
+	 * it has length > 1
 	 *
 	 */
 	public static <T> T argumentIsValue(T argument,
