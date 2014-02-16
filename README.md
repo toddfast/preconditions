@@ -1,9 +1,11 @@
 Java Preconditions
 ==================
 
-A simple but complete set of precondition checks for Java. Most commonly used at the beginning of methods, preconditions are used to ensure that values are what you expect before you continue. This library provides a robust set of methods to check preconditions, and has *no dependencies* other than Java 1.6+.
+A simple but complete set of precondition checks for Java. Most commonly used at the beginning of methods, preconditions are used to ensure that values are what you expect before you continue.
 
-You may ask why not just implement those checks the regular, old Java way. You can, but it's more readable to have methods that clearly say what's going on, and standardization of implementation and the exceptions and their error messages when validation fails are also useful, especially when working with other developers.
+This library provides a no-bloat solution (I'm looking at you, Guava), comprising a single class with a robust set of static methods to check common preconditions. It has **no dependencies** other than Java 1.6+.
+
+You may ask why not just implement those checks the regular, old Java way. You can, but it's more parsimonious and readable to have methods that clearly say what's going on, and standardization of implementation and the exceptions and error messages when validation fails are also useful, especially when working with other developers.
 
 Example
 --------
@@ -13,48 +15,50 @@ import com.toddfast.util.preconditions.Preconditions;
 
 public void someMethod(int someValue, String someString, Object someObject) {
 
-    // Most methods throw IllegalArgumentExcpetion on validation failure
+    // Most methods throw IllegalArgumentException on validation failure
     Preconditions.argumentNotNull(someObject,"someObject");
     
     if (Preconditions.isValue(someString)) { // Not null and length > 0
         // Or you can check and handle the situation manually
     }
 
-    // Note, all precondition methods return the values they check
+    // For easy inlining, precondition methods return the values they check
     this.myValue = Preconditions.valueGreaterThan(someValue,0,"someValue");
 }
 ```
+For more examples, please see the [unit tests](https://github.com/toddfast/preconditions/blob/master/src/test/java/com/toddfast/util/preconditions/PreconditionsTest.java).
 
 Precondition methods
----------------
+--------------------
 
-There are several type-specific variations of the following core methods:
+The library consists of a single utility class, `Preconditions`, with several type-specific variations of the core methods below.
+
+All methods other than `isNotNull()` and `isValue()` take the actual value, the desired value, and a parameter name, then throw `IllegalArgumentException` with a descriptive error message if the precondition fails. The `parameterName` parameter will be used to construct this error message. (To improve performance, just like with logging, avoid string construction for this value; it should just be the name of the variable in the source code to assist with debugging.)
+
 
 ```java
-// Boolean checks
-isNotNull(Object value)
-isValue(String value)
+// Boolean checks (no exception thrown)
+public boolean isNotNull(Object value)
+public boolean isValue(String value)
 
-// Argument validation (throw IllegalArgumentException)
-argumentNotNull(T argument, String parameterName)
-argumentIsValue(T argument, String parameterName)
-lengthGreaterThan(String argument, int length, String parameterName)
-lengthGreaterThanOrEqual(String argument, int length, String parameterName)
-lengthLessThan(String argument, int length, String parameterName)
-lengthLessThanOrEqual(String argument, int length, String parameterName)
+// Argument preconditions
+public T argumentNotNull(T argument, String parameterName)
+public T argumentIsValue(T argument, String parameterName)
 
-// Collection validation 
-collectionNotEmpty(Collection<?> argument, String parameterName)
-collectionItemsNotNull(Collection<?> argument, String parameterName)
-collectionItemsAreValues(Collection<?> argument, String parameterName)
+// String preconditions
+public String lengthGreaterThan(String argument, int length, String parameterName)
+public String lengthGreaterThanOrEqual(String argument, int length, String parameterName)
+public String lengthLessThan(String argument, int length, String parameterName)
+public String lengthLessThanOrEqual(String argument, int length, String parameterName)
 
-// Number validation
-valueGreaterThan(Number argument, Number value, String parameterName)
-valueGreaterThanOrEqual(Number argument, Number value, String parameterName)
-valueLessThan(Number argument, Number value, String parameterName)
-valueLessThanOrEqual(Number argument, Number value, String parameterName)
+// Collection preconditions
+public Collection<?> collectionNotEmpty(Collection<?> argument, String parameterName)
+public Collection<?> collectionItemsNotNull(Collection<?> argument, String parameterName)
+public Collection<?> collectionItemsAreValues(Collection<?> argument, String parameterName)
 
+// Number preconditions
+public Number valueGreaterThan(Number argument, Number value, String parameterName)
+public Number valueGreaterThanOrEqual(Number argument, Number value, String parameterName)
+public Number valueLessThan(Number argument, Number value, String parameterName)
+public Number valueLessThanOrEqual(Number argument, Number value, String parameterName)
 ```
-
-
-For more examples, please see the [unit tests](https://github.com/toddfast/preconditions/blob/master/src/test/java/com/toddfast/util/preconditions/PreconditionsTest.java).
