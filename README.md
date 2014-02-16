@@ -7,8 +7,21 @@ This library provides a no-bloat solution (I'm looking at you, Guava), comprisin
 
 You may ask why not just implement those checks the regular, old Java way. You can, but it's more parsimonious and readable to have methods that clearly say what's going on, and standardization of implementation and the exceptions and error messages when validation fails are also useful, especially when working with other developers.
 
+Getting started
+---------------
+
+This library is in Maven Central and can be used with the following dependency:
+
+```xml
+<dependency>
+  <groupId>com.toddfast.preconditions</groupId>
+  <artifactId>preconditions</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+
 Example
---------
+-------
 
 ```java
 import com.toddfast.util.preconditions.Preconditions;
