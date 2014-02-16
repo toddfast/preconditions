@@ -31,7 +31,7 @@ For more examples, please see the [unit tests](https://github.com/toddfast/preco
 Precondition methods
 --------------------
 
-The library consists of a single utility class, `Preconditions`, with several type-specific variations of the core methods below.
+The library consists of a single utility class, `Preconditions`, with several type-specific and/or generic variations of the core methods below.
 
 All methods other than `isNotNull()` and `isValue()` take the actual value, the desired value, and a parameter name, then throw `IllegalArgumentException` with a descriptive error message if the precondition fails. The `parameterName` parameter will be used to construct this error message. (To improve performance, just like with logging, avoid string construction for this value; it should just be the name of the variable in the source code to assist with debugging.)
 
@@ -41,7 +41,7 @@ All methods other than `isNotNull()` and `isValue()` take the actual value, the 
 public boolean isNotNull(Object value)
 public boolean isValue(String value)
 
-// Argument preconditions
+// General preconditions
 public T argumentNotNull(T argument, String parameterName)
 public T argumentIsValue(T argument, String parameterName)
 
@@ -52,9 +52,9 @@ public String lengthLessThan(String argument, int length, String parameterName)
 public String lengthLessThanOrEqual(String argument, int length, String parameterName)
 
 // Collection preconditions
-public Collection<?> collectionNotEmpty(Collection<?> argument, String parameterName)
-public Collection<?> collectionItemsNotNull(Collection<?> argument, String parameterName)
-public Collection<?> collectionItemsAreValues(Collection<?> argument, String parameterName)
+public Collection collectionNotEmpty(Collection argument, String parameterName)
+public Collection collectionItemsNotNull(Collection argument, String parameterName)
+public Collection collectionItemsAreValues(Collection argument, String parameterName)
 
 // Number preconditions
 public Number valueGreaterThan(Number argument, Number value, String parameterName)
